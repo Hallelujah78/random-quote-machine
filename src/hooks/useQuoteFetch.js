@@ -47,8 +47,9 @@ export const useQuoteFetch = () => {
 setIsLoadingQuote(false);
 const quoteIndex = getRandomArbitrary(0, state.quotes.length);
 setState((prev) => ({
-  quote: [state.quotes[quoteIndex].quote],
-  author: [state.quotes[quoteIndex].author],
+  quotes: [prev.quotes],
+  quote: [prev.quotes[quoteIndex].quote],
+  author: [prev.quotes[quoteIndex].author],
 }));
   }
 }, [isLoadingQuote]);
@@ -57,6 +58,7 @@ setState((prev) => ({
   //  setIsLoadingQuote(false);
   //  getQuotes();
   //}, [isLoadingQuote]);
+  
 
   return { state, loading, error, setLoading, setIsLoadingQuote };
 };

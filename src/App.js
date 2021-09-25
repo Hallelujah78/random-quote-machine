@@ -27,7 +27,7 @@ import {useQuoteFetch} from './hooks/useQuoteFetch';
 import { GlobalStyle } from "./GlobalStyle";
 
 const App = (props) => {
-const {state, error, setLoading, setIsLoadingQuote} = useQuoteFetch();
+const {state, error, setIsLoadingQuote} = useQuoteFetch();
 
 
 
@@ -45,11 +45,15 @@ if (error) return <div>Something went wrong...</div>
 
         <Author
         author={state.author}
+
         />
         <NewQuote
         text="New Quote"
         callback={() => setIsLoadingQuote(true)} />
-        <TweetQuote />
+        <TweetQuote
+        quote={state.quote}
+        author={state.author}
+        />
       </QuoteBox>
 
       <GlobalStyle />
