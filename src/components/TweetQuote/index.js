@@ -1,24 +1,19 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
+
 import { Wrapper } from "./TweetQuote.styles";
+import Tweet from "./Logo blue.svg";
 
 const TweetQuote = ({ quote, author }) => {
   return (
     <Wrapper>
-      <button>
-        <a
-          href={`https://twitter.com/intent/tweet?text=${quote} - ${author}`}
-          id="tweet-quote"
-          className="twitter-share-buttons"
-        >
-          <FontAwesomeIcon
-            icon={faTwitterSquare}
-            id="twitter-quote"
-            size={"20px"}
-          />
-        </a>
-      </button>
+      <a
+        className="twitter-share-buttons"
+        href={`https://twitter.com/intent/tweet?text=${quote} - ${author}`}
+        target="_blank"
+        id="tweet-quote"
+      >
+        <img className="twitter-share-buttons" src={Tweet} alt="" />
+      </a>
     </Wrapper>
   );
 };
