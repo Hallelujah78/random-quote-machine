@@ -8,8 +8,7 @@
 import React from "react";
 
 //Pseudo API
-import API from "./API";
-
+// import getQuotes from "./API";
 
 //styles
 
@@ -21,39 +20,24 @@ import NewQuote from "./components/NewQuote";
 import TweetQuote from "./components/TweetQuote";
 
 //Hook
-import {useQuoteFetch} from './hooks/useQuoteFetch';
+import { useQuoteFetch } from "./hooks/useQuoteFetch";
 
 //styles
 import { GlobalStyle } from "./GlobalStyle";
 
 const App = (props) => {
-const {state, error, setIsLoadingQuote} = useQuoteFetch();
+  const { state, error, setIsLoadingQuote } = useQuoteFetch();
 
-
-
-
-if (error) return <div>Something went wrong...</div>
+  if (error) return <div>Something went wrong...</div>;
 
   return (
     <div className="App">
-
       <QuoteBox>
+        <QuoteText quote={state.quote} />
 
-        <QuoteText
-        quote={state.quote}
-        />
-
-        <Author
-        author={state.author}
-
-        />
-        <NewQuote
-        text="New Quote"
-        callback={() => setIsLoadingQuote(true)} />
-        <TweetQuote
-        quote={state.quote}
-        author={state.author}
-        />
+        <Author author={state.author} />
+        <NewQuote text="New Quote" callback={() => setIsLoadingQuote(true)} />
+        <TweetQuote quote={state.quote} author={state.author} />
       </QuoteBox>
 
       <GlobalStyle />
