@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 
   /*This is the <a> tag*/
   .twitter-share-buttons {
-    clear: both;
     float: left;
     height: 40px;
     font-size: 20px;
