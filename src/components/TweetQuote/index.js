@@ -10,6 +10,7 @@ const TweetQuote = ({ quote, author }) => {
         className="twitter-share-buttons"
         href={`https://twitter.com/intent/tweet?text=${quote} - ${author}`}
         target="_blank"
+        rel="noreferrer noopener"
         id="tweet-quote"
       >
         <img className="twitter-share-buttons" src={Tweet} alt="" />
