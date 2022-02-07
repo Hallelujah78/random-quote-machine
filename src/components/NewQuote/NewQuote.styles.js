@@ -4,7 +4,7 @@ export const Wrapper = styled.button`
   height: auto;
   margin-right: 1rem;
   float: right;
-
+  clear: both;
   display: block;
   background: #ffc133;
   font-size: 2rem;
