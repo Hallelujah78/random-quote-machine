@@ -7,6 +7,8 @@ const TweetQuote = ({ quote, author }) => {
   return (
     <Wrapper>
       <a
+        target="_blank"
+        rel="noopener noreferrer"
         id="tweet-quote"
         href={`https://twitter.com/intent/tweet?text=${quote} - ${author}`}
       >
