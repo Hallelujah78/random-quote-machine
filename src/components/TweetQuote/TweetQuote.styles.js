@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: block;
-  clear: both;
-
   /*This is the <a> tag*/
   .twitter-share-buttons {
     float: left;
     height: 40px;
+    width: 50px;
     font-size: 20px;
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
@@ -16,9 +14,8 @@ export const Wrapper = styled.div`
 
   /*this is the button*/
   #twitter-quote {
-    clear: both;
     float: left;
-
+    height: 100px;
     font-size: 50px;
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
@@ -26,9 +23,5 @@ export const Wrapper = styled.div`
     path {
       fill: #ffc133;
     }
-  }
-
-  :hover {
-    opacity: 0.8;
   }
 `;

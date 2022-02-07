@@ -1,0 +1,13 @@
+.test {
+  height: 80px;
+  width: 80px;
+  margin-right: 1rem;
+
+  display: block;
+  background: #ffc133;
+  font-size: 20rem;
+  color: #fff;
+  border-radius: 6px;
+  border: 0px;
+  transition: 0.2s;
+}

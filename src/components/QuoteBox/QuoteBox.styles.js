@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   height: 100vh;
   width: 100vw;
-  background: #FFC133;
+  /* background: #FFC133; */
   justify-content: center;
   position: relative;
 `;
