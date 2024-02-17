@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 //components
 import QuoteBox from "./components/QuoteBox";
@@ -7,18 +7,16 @@ import Author from "./components/Author";
 import NewQuote from "./components/NewQuote";
 import TweetQuote from "./components/TweetQuote";
 
-//Hook
+//Hooks
 import { useQuoteFetch } from "./hooks/useQuoteFetch";
 
 //styles
 import { GlobalStyle } from "./styles/GlobalStyle";
 
 const App = () => {
-  const { state, error, getQuotes } = useQuoteFetch();
+  const { state, error, loading, getQuotes } = useQuoteFetch();
 
-  useEffect(() => {
-    getQuotes();
-  }, [getQuotes]);
+  // if (loading) return <div>Loading...</div>;
 
   if (error) return <div>Something went wrong...</div>;
 
@@ -28,6 +26,7 @@ const App = () => {
         <QuoteText quote={state.quote} />
 
         <Author author={state.author} />
+
         <NewQuote text="New Quote" callback={getQuotes} />
 
         <TweetQuote
