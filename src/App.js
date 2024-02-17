@@ -1,17 +1,4 @@
-//Notes
-
-// RENDERING NESTED COMPONENTS
-// To nest a component inside another components
-// you must pass it as props = MyComp = (props)
-// You must use {props.children} in the parent
-
-import React from "react";
-
-import "./App.css";
-//Pseudo API
-// import getQuotes from "./API";
-
-//styles
+import React, { useEffect } from "react";
 
 //components
 import QuoteBox from "./components/QuoteBox";
@@ -24,10 +11,14 @@ import TweetQuote from "./components/TweetQuote";
 import { useQuoteFetch } from "./hooks/useQuoteFetch";
 
 //styles
-import { GlobalStyle } from "./GlobalStyle";
+import { GlobalStyle } from "./styles/GlobalStyle";
 
 const App = () => {
-  const { state, error, setIsLoadingQuote } = useQuoteFetch();
+  const { state, error, getQuotes } = useQuoteFetch();
+
+  useEffect(() => {
+    getQuotes();
+  }, [getQuotes]);
 
   if (error) return <div>Something went wrong...</div>;
 
@@ -37,7 +28,7 @@ const App = () => {
         <QuoteText quote={state.quote} />
 
         <Author author={state.author} />
-        <NewQuote text="New Quote" callback={() => setIsLoadingQuote(true)} />
+        <NewQuote text="New Quote" callback={getQuotes} />
 
         <TweetQuote
           id="tweet-quote"

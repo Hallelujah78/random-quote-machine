@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import API from "../API";
+import { useState, useCallback } from "react";
+import API from "../utils/API.js";
 
 //helpers
-import { getRandomArbitrary } from "../helpers";
+import { getRandomArbitrary } from "../utils/helpers";
 
 const initialState = {
   quotes: [],
@@ -14,49 +14,25 @@ export const useQuoteFetch = () => {
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [isLoadingQuote, setIsLoadingQuote] = useState(false);
-  //const [results, setResults] = useState(null);
 
-  const getQuotes = async () => {
+  const getQuotes = useCallback(async () => {
+    setError(false);
+    setLoading(true);
     try {
-      setError(false);
-      setLoading(true);
       const myQuotes = await API.getQuotes();
 
       const quoteIndex = getRandomArbitrary(0, myQuotes.quotes.length);
-      console.log(quoteIndex);
 
-      setState((prev) => ({
-        ...myQuotes,
+      setState({
         quotes: [...myQuotes.quotes],
         quote: [myQuotes.quotes[quoteIndex].quote],
         author: [myQuotes.quotes[quoteIndex].author],
-      }));
+      });
     } catch (error) {
       setError(true);
     }
     setLoading(false);
-  };
+  }, []);
 
-  //initial render
-  useEffect(() => {
-    if (!isLoadingQuote) {
-      getQuotes();
-    } else {
-      setIsLoadingQuote(false);
-      const quoteIndex = getRandomArbitrary(0, state.quotes.length);
-      setState((prev) => ({
-        quotes: [prev.quotes],
-        quote: [prev.quotes[quoteIndex].quote],
-        author: [prev.quotes[quoteIndex].author],
-      }));
-    }
-  }, [isLoadingQuote, state.quotes.length]);
-
-  //useEffect(() => {
-  //  setIsLoadingQuote(false);
-  //  getQuotes();
-  //}, [isLoadingQuote]);
-
-  return { state, loading, error, setLoading, setIsLoadingQuote };
+  return { state, loading, error, getQuotes };
 };
