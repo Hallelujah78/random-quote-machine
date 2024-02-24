@@ -16,7 +16,7 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 const App = () => {
   const { state, error, loading, getQuotes } = useQuoteFetch();
 
-  // if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>;
 
   if (error) return <div>Something went wrong...</div>;
 

@@ -11,9 +11,11 @@ export const Wrapper = styled.button`
   color: #fff;
   border-radius: 6px;
   border: 0px;
-  transition: 0.2s;
+  transition: 0.8s linear all;
 
-  :hover {
+  &:hover {
     opacity: 0.8;
+    cursor: pointer;
+    transform: scaleX(1.01);
   }
 `;
