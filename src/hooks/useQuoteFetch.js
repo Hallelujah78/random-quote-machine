@@ -27,7 +27,6 @@ export const useQuoteFetch = () => {
     try {
       const myQuotes = await API.getQuotes(controller.signal);
       if (myQuotes) {
-        console.log(myQuotes.quotes[0]);
         const quoteIndex = getRandomArbitrary(0, myQuotes.quotes.length);
 
         setState({
